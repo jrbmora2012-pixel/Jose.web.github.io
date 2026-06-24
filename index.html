@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    body{
-    background-color: #000000;
-color: #ffffff;
-    }
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose.gov</title>
+    <link rel="icon" type="image/png" href="image_eb1743.png">
+    
+
+    <meta name="description" content="Official Jose.gov website for Jose De Jesus Mora (JJ). Rubik's cube solver and runner from Hillsboro, Texas.">
+    <meta name="keywords" content="Jose De Jesus Mora, Jose Mora, JJ Mora, Jose.gov, Hillsboro Texas, 31jose.mora">
+    <meta name="author" content="Jose De Jesus Mora">
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Jose.gov</h1>
 
     <h2>About me</h2>
-<h4>I like to solve rubix cubes,
-    <p> I enjoy running long distances (5k, 3200, 1600, 800),</p> 
-    I know how to code HTML, Python, Java, Javascript</h4>
+    <h4>I like to solve rubix cubes,</h4>
+    <p>I enjoy running long distances (5k, 3200, 1600, 800),</p> 
+    <h4>I know how to code HTML, Python, Java, Javascript</h4>
+    <p>I also like churros, Gansitos, water (never coke or dirnks of that type except Jumex)</p>
+    <h4>I live at ----. ..--- ---.. / . .-.-.- / . .-.. -- / .... .. .-.. .-.. ... -... --- .-. --- / - . -..- .- ...</h4>
+    <p>or 32.0103&deg; N, 97.1111&deg; W</p>
+    
+    <h3>Name: Jose De Jesus Mora (Nickname: JJ)</h3>
+    <h3>Email: 31jose.mora@hillsboroisd.org</h3>
 
-
+    <button><h3>Random button</h3></button>
 
     <div style="text-align: center; margin-top: 40px;">
-        <span id="view-counter" style="padding: 4px 12px; border: 1px solid #ffffff; color: #00eaff; font-weight: bold;">
-            Views: 00001 (Local Preview)
+        <span id="view-counter" style="padding: 4px 12px; border: 1px solid #ffffff; color: #15ff00; font-weight: bold;">
+            Views: Loading...
         </span>
     </div>
-    
-    </body>
-    </html>
+
+    <script>
+        const namespace = "jose-gov-dashboard-2026"; 
+        const key = "main-views";
+
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+            .then(res => res.json())
+            .then(data => {
+                const el = document.getElementById("view-counter");
+                if (el && data.value) {
+                    el.innerText = "Views: " + String(data.value).padStart(5, '0');
+                }
+            })
+            .catch(err => {
+                console.log("Offline mode active");
+                const el = document.getElementById("view-counter");
+                if (el) el.innerText = "Views: 00001 (Local Preview)";
+            });
+    </script>
+
+</body>
+</html>
